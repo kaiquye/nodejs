@@ -22,6 +22,11 @@ export class ListUniversityUseCase implements ListUniversityAdapter {
     );
 
     const list = listOfUniversities ?? [];
-    return Response_.Ok(list);
+    return Response_.Ok({
+      list,
+      count: list.length,
+      current_page: input.pagination.page,
+      per_page: input.pagination.perPage,
+    });
   }
 }
