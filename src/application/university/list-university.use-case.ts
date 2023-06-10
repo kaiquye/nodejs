@@ -14,10 +14,11 @@ export class ListUniversityUseCase implements ListUniversityAdapter {
   ) {}
 
   async Invoke(input: IListUniversityIn): Promise<Response_> {
-    const listOfUniversities = this.universityRep.findAllByCountry(
-      input.search.country,
-      input.pagination.page,
-      input.pagination.perPage,
+    console.log(input);
+    const listOfUniversities = await this.universityRep.findAllByCountry(
+      input?.search?.country,
+      Number(input?.pagination?.page) || 0,
+      input?.pagination?.perPage || 10,
     );
 
     const list = listOfUniversities ?? [];

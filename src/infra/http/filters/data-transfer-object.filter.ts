@@ -1,48 +1,36 @@
-import { DtoAdapter } from "../../../domain/adapters/dto-adapter";
-import { IPathsDto } from "../../../domain/interfaces/filters.interfaces";
-
-function Run(target, value) {
-  const keys = Object.getOwnPropertyNames(value);
-  const instance = new target();
-
-  for (let i = 0; i < keys.length; i++) {
-    const existsProperty = instance[keys[i]];
-    if (existsProperty) {
-      instance[keys[i]] = value[keys[i]];
-    }
-  }
-
-  return instance;
-}
+import { DtoAdapter } from '../../../domain/adapters/dto-adapter';
+import { IPathsDto } from '../../../domain/interfaces/filters.interfaces';
+import { plainToClass } from 'class-transformer';
 
 function DTOFilter<T extends DtoAdapter>(Dto: new () => T, path: IPathsDto) {
-  return async (req, res) => {
+  return async (req, res, next) => {
     try {
       const body = req?.body;
       const param = req?.param;
       const query = req?.query;
 
-      let DTO: DtoAdapter;
+      let request: DtoAdapter;
       switch (path) {
-        case "BODY":
-          DTO = Run(Dto, body);
-          await DTO.isValid();
+        case 'BODY':
+          request = plainToClass(Dto, body);
+          await request.isValid();
           break;
-        case "PARAMS":
-          DTO = Run(Dto, param);
-          await DTO.isValid();
+        case 'PARAMS':
+          request = plainToClass(Dto, param);
+          await request.isValid();
           break;
-        case "QUERY":
-          DTO = Run(Dto, query);
-          await DTO.isValid();
+        case 'QUERY':
+          request = plainToClass(Dto, query);
+          await request.isValid();
           break;
         default:
-          throw new Error("Invalid direct type.");
+          return next();
       }
+      return next();
     } catch (exception) {
       res.status(400).json({
-        message: "invalid request",
-        data: exception,
+        message: 'invalid request',
+        data: exception?.map((value) => value?.constraints),
       });
     }
   };

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "ts-node-dev --respawn --ignore-watch node_modules src/infra/http/main.ts",
+    "start": "ts-node-dev --respawn --ignore-watch node_modules src/infra/main.ts",
     "migration:generate": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:generate -d src/infra/database/writing.ts",
     "typeorm:writing": "typeorm-ts-node-commonjs -d src/infra/database/writing.ts",
     "typeorm:reading": "typeorm-ts-node-commonjs -d src/infra/database/reading.ts",

@@ -1,6 +1,6 @@
-import { CreateUniversityDto } from "../../infra/http/dto/create-university.dto";
-import { University } from "../models/university.model";
-import { ICreateUniversityIN } from "../../application/university/interfaces/create-university.interfaces";
+import { CreateUniversityDto } from '../../infra/http/controllers/dto/create-university.dto';
+import { University } from '../models/university.model';
+import { ICreateUniversityIN } from '../../application/university/interfaces/create-university.interfaces';
 
 class UniversityMapper {
   toDomain(data: CreateUniversityDto | ICreateUniversityIN): University {

@@ -8,7 +8,9 @@ export class UniversityRepository extends IUniversityRepository {
   }
 
   async create(data: University): Promise<University> {
-    return this.Writing.create(data);
+    const ts = await this.Writing.create(data);
+    await this.Writing.save(ts);
+    return ts;
   }
 
   async findAllByCountry(
@@ -24,6 +26,12 @@ export class UniversityRepository extends IUniversityRepository {
       },
       skip: offset,
       take: perPage,
+      select: {
+        country: true,
+        stateProvince: true,
+        name: true,
+        id: true,
+      },
     });
   }
 }

@@ -17,4 +17,12 @@ export class UniversityMemoryRepository extends IUniversityRepository {
 
     return Promise.resolve(result);
   }
+
+  findAllByCountry(
+    country: string,
+    page: number,
+    perPage: number,
+  ): Promise<University[]> {
+    return Promise.resolve([]);
+  }
 }

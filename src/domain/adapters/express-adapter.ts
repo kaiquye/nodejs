@@ -30,6 +30,7 @@ export function InterceptorResponse(
   return async function (req, res: Response, next: NextFunction) {
     const body = req.body;
     const params = req.params;
+    const query = req.query;
     const cookie = req.cookie;
 
     try {
@@ -38,7 +39,7 @@ export function InterceptorResponse(
         body.cookie = cookie;
       }
 
-      const response: Response_ = await controller(body, params);
+      const response: Response_ = await controller(body, params, query);
 
       // if (response.cookie?.name && response.cookie?.value) {
       //   res.cookie(response.cookie.name, response.cookie.value, { httpOnly: true });
