@@ -3,13 +3,9 @@ import { UseCaseAdapter } from '../../../domain/adapters/use-case.adapter';
 import { Response_ } from '../../../domain/error/custom.error';
 
 export interface IListUniversityIn {
-  pagination: {
-    page: number;
-    perPage: number; // limit for page
-  };
-  search: {
-    country: string;
-  };
+  page: number;
+  perPage: number; // limit for page
+  country: string;
 }
 
 export type ListUniversityAdapter = UseCaseAdapter<

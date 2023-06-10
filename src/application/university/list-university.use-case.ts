@@ -16,16 +16,17 @@ export class ListUniversityUseCase implements ListUniversityAdapter {
   async Invoke(input: IListUniversityIn): Promise<Response_> {
     console.log(input);
     const listOfUniversities = await this.universityRep.findAllByCountry(
-      input?.search?.country,
-      Number(input?.pagination?.page) || 0,
-      input?.pagination?.perPage || 10,
+      input?.country,
+      Number(input.page) || 0,
+      input?.perPage || 10,
     );
 
     const list = listOfUniversities ?? [];
     return Response_.Ok({
       count: list.length,
-      current_page: input.pagination.page,
-      per_page: input.pagination.perPage,
+      search: input?.country,
+      current_page: input?.page || 0,
+      per_page: input?.perPage || 10,
       list,
     });
   }
