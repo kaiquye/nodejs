@@ -14,7 +14,6 @@ export class ListUniversityUseCase implements ListUniversityAdapter {
   ) {}
 
   async Invoke(input: IListUniversityIn): Promise<Response_> {
-    console.log(input);
     const listOfUniversities = await this.universityRep.findAllByCountry(
       input?.country,
       Number(input.page) || 0,
