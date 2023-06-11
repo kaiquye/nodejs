@@ -6,7 +6,7 @@ import { UniversityMemoryRepository } from '../../infra/database/repositories/me
 import { IUniversityRepository } from './repository/university-repository.interface';
 import { CreateUniversityUseCase } from './create-university.use-case';
 import { Response_ } from '../../domain/error/custom.error';
-import { UniversityErrorsCodes } from '../../domain/codes/university-errors.codes';
+import { UniversityErrorsCodes } from '../../domain/error/codes/university-errors.codes';
 
 describe('create a new university', function () {
   let service: CreateUniversityUseCaseAdapter;

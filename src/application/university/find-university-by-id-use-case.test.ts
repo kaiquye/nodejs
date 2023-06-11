@@ -5,7 +5,7 @@ import {
   ICreateUniversityIN,
 } from './interfaces/create-university.interfaces';
 import { IUniversityRepository } from './repository/university-repository.interface';
-import { UniversityErrorsCodes } from '../../domain/codes/university-errors.codes';
+import { UniversityErrorsCodes } from '../../domain/error/codes/university-errors.codes';
 import { FindUniversityByIdAdapter } from './interfaces/find-university-by-id.interfaces';
 import { FindUniversityByIdUseCase } from './find-university-by-id.use.case';
 

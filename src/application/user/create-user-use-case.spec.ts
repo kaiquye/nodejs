@@ -1,4 +1,4 @@
-import { UniversityErrorsCodes } from '../../domain/codes/university-errors.codes';
+import { UniversityErrorsCodes } from '../../domain/error/codes/university-errors.codes';
 
 describe('create a new user', function () {
   test('should return a new user', function () {

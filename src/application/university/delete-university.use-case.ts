@@ -2,7 +2,7 @@ import { DeleteUniversityAdapter } from './interfaces/delete-university.interfac
 import { Response_ } from '../../domain/error/custom.error';
 import { inject, injectable } from 'tsyringe';
 import { IUniversityRepository } from './repository/university-repository.interface';
-import { UniversityErrorsCodes } from '../../domain/codes/university-errors.codes';
+import { UniversityErrorsCodes } from '../../domain/error/codes/university-errors.codes';
 
 @injectable()
 export class DeleteUniversityUseCase implements DeleteUniversityAdapter {

@@ -2,7 +2,7 @@ import { FindUniversityByIdAdapter } from './interfaces/find-university-by-id.in
 import { Response_ } from '../../domain/error/custom.error';
 import { inject, injectable } from 'tsyringe';
 import { IUniversityRepository } from './repository/university-repository.interface';
-import { UniversityErrorsCodes } from '../../domain/codes/university-errors.codes';
+import { UniversityErrorsCodes } from '../../domain/error/codes/university-errors.codes';
 
 @injectable()
 export class FindUniversityByIdUseCase implements FindUniversityByIdAdapter {
