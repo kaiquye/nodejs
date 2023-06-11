@@ -20,9 +20,15 @@ export class DeleteUniversityUseCase implements DeleteUniversityAdapter {
         code: UniversityErrorsCodes.CD0404,
       });
     }
+
     /**
-     * @ Esta apagando o registro do banco de dados. Alterar para apenas mudar o status do registro.
+     * @AVISO: "Em vez de apagar o registro do banco de dados, devemos apenas alterar o status do registro."
      */
     await this.universityRep.delete(univeristyId);
+
+    return Response_.Ok({
+      deletedId: univeristyId,
+      status: true,
+    });
   }
 }
