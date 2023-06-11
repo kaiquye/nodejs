@@ -1,7 +1,27 @@
 import { UniversityErrorsCodes } from '../../domain/error/codes/university-errors.codes';
+import { CreateUserUseCase } from './create-user.use-case';
+import { IUserRepository } from './repository/user-repository.interface';
 
 describe('create a new user', function () {
-  test('should return a new user', function () {
+  let service: CreateUserUseCase;
+  let repositoryInMemory: IUserRepository;
+
+  beforeAll(() => {
+    repositoryInMemory;
+    service = new CreateUserUseCase(repositoryInMemory);
+  });
+
+  afterAll(() => {
+    service = null;
+    repositoryInMemory = null;
+  });
+
+  test('shoud check if if it was defined', function () {
+    expect(service).toBeDefined();
+    expect(repositoryInMemory).toBeDefined();
+  });
+
+  test('should return a new user', async function () {
     const request = {
       name: 'Kaic Mendes',
       email: 'kaic.email@gmail.com',
@@ -16,7 +36,7 @@ describe('create a new user', function () {
     expect(result.statusCode).toEqual(201);
     expect(result.success).toEqual(true);
   });
-  test('should error return that a user already exists', function () {
+  test('should error return that a user already exists', async function () {
     const request = {
       name: 'Kaic Mendes',
       email: 'kaic.email@gmail.com',
