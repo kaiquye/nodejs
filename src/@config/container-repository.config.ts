@@ -1,7 +1,4 @@
-import { container } from "tsyringe";
-import { UniversityMemoryRepository } from "../infra/database/repositories/memory/university-memory.repository";
+import { container } from 'tsyringe';
+import { UniversityRepository } from '../infra/database/repositories/postgres/university.repository';
 
-container.registerSingleton(
-  "university-repository",
-  UniversityMemoryRepository
-);
+container.registerSingleton('university-repository', UniversityRepository);

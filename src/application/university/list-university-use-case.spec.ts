@@ -5,6 +5,7 @@ import {
   IListUniversityIn,
   ListUniversityAdapter,
 } from './interfaces/list-university.interface';
+import { ListUniversityUseCase } from './list-university.use-case';
 
 describe('create a new university', function () {
   let service: ListUniversityAdapter;
@@ -12,39 +13,44 @@ describe('create a new university', function () {
 
   beforeAll(() => {
     repositoryInMemory = new UniversityMemoryRepository();
+    service = new ListUniversityUseCase(repositoryInMemory);
+  });
+
+  afterAll(() => {
+    service = null;
+    repositoryInMemory = null;
+  });
+
+  test('shoud check if if it was defined', function () {
+    expect(service).toBeDefined();
+    expect(repositoryInMemory).toBeDefined();
   });
 
   test('should return a total list of the university', async function () {
     const input: IListUniversityIn = {
-      search: {
-        country: 'brazil',
-      },
-      pagination: {
-        page: 1,
-        perPage: 20,
-      },
+      country: 'brazil',
+      page: 1,
+      perPage: 20,
     };
 
     const result = await service.Invoke(input);
-    expect(result.statusCode).toEqual(201);
+    expect(result.statusCode).toEqual(200);
     expect(result.success).toEqual(true);
     expect(result.data).toBeDefined();
   });
 
   test('should return an empty university list', async function () {
     const input: IListUniversityIn = {
-      search: {
-        country: 'brazil',
-      },
-      pagination: {
-        page: 1,
-        perPage: 20,
-      },
+      country: 'UNKNOWN COUNTRY INVALID NOT VALID',
+      page: 1,
+      perPage: 20,
     };
 
     const result = await service.Invoke(input);
-    expect(result.statusCode).toEqual(201);
+    expect(result.statusCode).toEqual(200);
     expect(result.success).toEqual(true);
-    expect(result.data?.['universities'].length).toEqual(0);
+    expect(result.data?.['list'].length).toEqual(0);
+    expect(result.data?.['count']).toEqual(0);
+    expect(result.data?.['current_page']).toEqual(1);
   });
 });

@@ -17,6 +17,16 @@ describe('create a new university', function () {
     service = new CreateUniversityUseCase(repositoryInMemory);
   });
 
+  afterAll(() => {
+    service = null;
+    repositoryInMemory = null;
+  });
+
+  test('shoud check if if it was defined', function () {
+    expect(service).toBeDefined();
+    expect(repositoryInMemory).toBeDefined();
+  });
+
   test('should create a new university', async function () {
     const request: ICreateUniversityIN = {
       country: 'wrx-sti-impreza',

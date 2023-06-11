@@ -1,5 +1,5 @@
-import { DtoAdapter } from "../../../domain/adapters/dto-adapter";
-import { IsArray, IsString, Length } from "class-validator";
+import { DtoAdapter } from '../../../../domain/adapters/dto-adapter';
+import { IsArray, IsString, Length } from 'class-validator';
 
 export class CreateUniversityDto extends DtoAdapter {
   @IsString()

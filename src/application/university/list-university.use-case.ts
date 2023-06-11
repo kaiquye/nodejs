@@ -14,13 +14,19 @@ export class ListUniversityUseCase implements ListUniversityAdapter {
   ) {}
 
   async Invoke(input: IListUniversityIn): Promise<Response_> {
-    const listOfUniversities = this.universityRep.findAllByCountry(
-      input.search.country,
-      input.pagination.page,
-      input.pagination.perPage,
+    const listOfUniversities = await this.universityRep.findAllByCountry(
+      input?.country,
+      Number(input.page) || 0,
+      input?.perPage || 10,
     );
 
     const list = listOfUniversities ?? [];
-    return Response_.Ok(list);
+    return Response_.Ok({
+      count: list.length,
+      search: input?.country,
+      current_page: input?.page || 0,
+      per_page: input?.perPage || 10,
+      list,
+    });
   }
 }
