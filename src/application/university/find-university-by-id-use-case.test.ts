@@ -1,22 +1,23 @@
 import { UniversityMemoryRepository } from '../../infra/database/repositories/memory/university-memory.repository';
 import { CreateUniversityUseCase } from './create-university.use-case';
-import { DeleteUniversityUseCase } from './delete-university.use-case';
 import {
   CreateUniversityUseCaseAdapter,
   ICreateUniversityIN,
 } from './interfaces/create-university.interfaces';
 import { IUniversityRepository } from './repository/university-repository.interface';
 import { UniversityErrorsCodes } from '../../domain/codes/university-errors.codes';
+import { FindUniversityByIdAdapter } from './interfaces/find-university-by-id.interfaces';
+import { FindUniversityByIdUseCase } from './find-university-by-id.use.case';
 
 describe('find university by id', function () {
-  let service;
+  let service: FindUniversityByIdAdapter;
   let createUniversityUseCase: CreateUniversityUseCaseAdapter;
   let repositoryInMemory: IUniversityRepository;
 
   beforeAll(() => {
     repositoryInMemory = new UniversityMemoryRepository();
     createUniversityUseCase = new CreateUniversityUseCase(repositoryInMemory);
-    service = new DeleteUniversityUseCase(repositoryInMemory);
+    service = new FindUniversityByIdUseCase(repositoryInMemory);
   });
 
   afterAll(() => {
@@ -44,7 +45,7 @@ describe('find university by id', function () {
     const result = await service.Invoke(university.data['id']);
 
     expect(result.success).toEqual(true);
-    expect(result.data['university']).toEqual(university.data);
+    expect(result.data).toEqual(university.data);
   });
   test('should return not found', async function () {
     const request = 'aaaa-bbbb-cccc-dddd'; //uuid
