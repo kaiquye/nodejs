@@ -34,4 +34,8 @@ export class UniversityRepository extends IUniversityRepository {
       },
     });
   }
+
+  async delete(universiry: University): Promise<University> {
+    await this.Writing.remove(universiry);
+  }
 }
