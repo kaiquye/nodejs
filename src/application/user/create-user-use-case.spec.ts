@@ -1,13 +1,14 @@
-import { UniversityErrorsCodes } from '../../domain/error/codes/university-errors.codes';
 import { CreateUserUseCase } from './create-user.use-case';
 import { IUserRepository } from './repository/user-repository.interface';
+import { UserMemoryRepository } from '../../infra/database/repositories/memory/user-memory.repository';
+import { UserErrorsCodes } from '../../domain/error/codes/user-errors.codes';
 
 describe('create a new user', function () {
   let service: CreateUserUseCase;
   let repositoryInMemory: IUserRepository;
 
   beforeAll(() => {
-    repositoryInMemory;
+    repositoryInMemory = new UserMemoryRepository();
     service = new CreateUserUseCase(repositoryInMemory);
   });
 
@@ -44,15 +45,12 @@ describe('create a new user', function () {
       password: 'D34DS@S',
     };
 
-    await service.Invoke(request);
     try {
       await service.Invoke(request);
     } catch (exception) {
       expect(exception.statusCode).toEqual(409);
-      expect(exception.code).toEqual(UniversityErrorsCodes.CD0409);
-      expect(exception.message).toEqual(
-        'The university provided has already been registered previously',
-      );
+      expect(exception.code).toEqual(UserErrorsCodes.CD0409);
+      expect(exception.message).toEqual('user already registered');
     }
   });
 });

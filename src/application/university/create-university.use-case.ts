@@ -1,8 +1,8 @@
+import { inject, injectable } from 'tsyringe';
 import {
   CreateUniversityUseCaseAdapter,
   ICreateUniversityIN,
 } from './interfaces/create-university.interfaces';
-import { inject, injectable } from 'tsyringe';
 import { IUniversityRepository } from './repository/university-repository.interface';
 import UniversityMapper from '../../domain/mappers/university.mapper';
 import { Response_ } from '../../domain/error/custom.error';
