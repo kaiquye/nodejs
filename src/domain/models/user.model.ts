@@ -2,7 +2,7 @@ import { Column, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeor
 import { Exclude } from 'class-transformer';
 
 @Entity({ name: 'tb_User' })
-export class UserModel {
+export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
   @Column({ nullable: false })
