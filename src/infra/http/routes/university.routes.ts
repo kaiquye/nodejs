@@ -6,12 +6,11 @@ import { ListAllUniversityDto } from '../controllers/dto/list-all-university.dto
 import { CreateUniversityDto } from '../controllers/dto/create-university.dto';
 import { FindUniversityByIdDto } from '../controllers/dto/find-university-by-id.dto';
 import { DeleteUniversityDto } from '../controllers/dto/delete-university.dto';
-import {
-  UpdateUniversityDtoBody,
-  UpdateUniversityDtoParams,
-} from '../controllers/dto/update-university.dto';
+import { UpdateUniversityDtoBody } from '../controllers/dto/update-university.dto';
+import { AuthenticationMiddleware } from '../middlewares/authentication.middleware';
 
 const UniversityRoutes = Router();
+UniversityRoutes.use(AuthenticationMiddleware);
 
 UniversityRoutes.post(
   `/university/new`,

@@ -17,7 +17,6 @@ export class CreateUserUseCase implements CreateUserUseCaseAdapter {
   ) {}
   async Invoke(input: ICreateUserIn): Promise<Response_> {
     const userAlreadyRegistered = await this.userRep.exists({ email: input.email });
-    console.log(userAlreadyRegistered);
     if (userAlreadyRegistered) {
       throw Response_.ConflictException({
         message: 'user already registered',
