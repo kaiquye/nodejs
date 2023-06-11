@@ -25,4 +25,13 @@ export class UniversityMemoryRepository extends IUniversityRepository {
   ): Promise<University[]> {
     return Promise.resolve([]);
   }
+
+  delete(university: University): Promise<University> {
+    const index = this.database.indexOf(university);
+    if (index) {
+      this.database.slice(index, 1);
+    }
+
+    return Promise.resolve(university);
+  }
 }

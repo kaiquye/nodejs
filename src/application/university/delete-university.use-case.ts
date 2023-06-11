@@ -1,9 +1,10 @@
 import { DeleteUniversityAdapter } from './interfaces/delete-university.interfaces';
 import { Response_ } from '../../domain/error/custom.error';
-import { inject } from 'tsyringe';
+import { inject, injectable } from 'tsyringe';
 import { IUniversityRepository } from './repository/university-repository.interface';
 import { UniversityErrorsCodes } from '../../domain/codes/university-errors.codes';
 
+@injectable()
 export class DeleteUniversityUseCase implements DeleteUniversityAdapter {
   constructor(
     @inject('university-repository')

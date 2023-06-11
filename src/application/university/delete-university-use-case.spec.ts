@@ -2,14 +2,16 @@ import { CreateUniversityUseCaseAdapter } from './interfaces/create-university.i
 import { IUniversityRepository } from './repository/university-repository.interface';
 import { UniversityMemoryRepository } from '../../infra/database/repositories/memory/university-memory.repository';
 import { UniversityErrorsCodes } from '../../domain/codes/university-errors.codes';
+import { DeleteUniversityAdapter } from './interfaces/delete-university.interfaces';
+import { DeleteUniversityUseCase } from './delete-university.use-case';
 
 describe('delete university by id', function () {
-  let service: CreateUniversityUseCaseAdapter;
+  let service: DeleteUniversityAdapter;
   let repositoryInMemory: IUniversityRepository;
 
   beforeAll(() => {
     repositoryInMemory = new UniversityMemoryRepository();
-    service = null;
+    service = new DeleteUniversityUseCase(repositoryInMemory);
   });
 
   afterAll(() => {
