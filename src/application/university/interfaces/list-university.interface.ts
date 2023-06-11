@@ -1,4 +1,3 @@
-import { University } from '../../../domain/models/university.model';
 import { UseCaseAdapter } from '../../../domain/adapters/use-case.adapter';
 import { Response_ } from '../../../domain/error/custom.error';
 

@@ -1,6 +1,7 @@
 import { CreateUniversityUseCaseAdapter } from './interfaces/create-university.interfaces';
 import { IUniversityRepository } from './repository/university-repository.interface';
 import { UniversityMemoryRepository } from '../../infra/database/repositories/memory/university-memory.repository';
+import { UniversityErrorsCodes } from '../../domain/codes/university-errors.codes';
 
 describe('delete university by id', function () {
   let service: CreateUniversityUseCaseAdapter;
@@ -37,7 +38,7 @@ describe('delete university by id', function () {
     const result = await service.Invoke(request);
 
     expect(result.statusCode).toEqual(404);
-    expect(result.code).toEqual(404);
+    expect(result.code).toEqual(UniversityErrorsCodes.CD0404);
     expect(result.message).toEqual(
       'The university provided was not found in our database',
     );
