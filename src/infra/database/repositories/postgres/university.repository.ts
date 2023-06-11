@@ -36,6 +36,6 @@ export class UniversityRepository extends IUniversityRepository {
   }
 
   async delete(universiry: University): Promise<University> {
-    await this.Writing.remove(universiry);
+    return this.Writing.remove(universiry);
   }
 }
