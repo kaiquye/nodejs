@@ -17,7 +17,6 @@ describe('create university dto', function () {
 
       await dto.isValid();
     } catch (exception) {
-      console.log(exception);
       const error = exception[0].constraints;
       expect(error).toEqual({ isNotEmpty: 'country should not be empty' });
     }

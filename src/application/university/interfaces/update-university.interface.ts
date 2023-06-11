@@ -4,7 +4,7 @@ import { Response_ } from '../../../domain/error/custom.error';
 
 export interface IUpdateUniversityIn {
   updateForThisId: string;
-  infos: University;
+  infos: Partial<University>;
 }
 
 export type UpdateUniversityAdapter = UseCaseAdapter<

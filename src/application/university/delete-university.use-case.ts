@@ -10,12 +10,10 @@ export class DeleteUniversityUseCase implements DeleteUniversityAdapter {
     @inject('university-repository')
     private readonly universityRep: IUniversityRepository,
   ) {}
-  async Invoke(univeristyId: string): Promise<Response_> {
+  async Invoke(universityId: string): Promise<Response_> {
     const universityFound = await this.universityRep.exists({
-      id: univeristyId,
+      id: universityId,
     });
-
-    console.log(universityFound);
 
     if (!universityFound) {
       throw Response_.NotFoundException({
@@ -27,10 +25,10 @@ export class DeleteUniversityUseCase implements DeleteUniversityAdapter {
     /**
      * @AVISO: "Em vez de apagar o registro do banco de dados, devemos apenas alterar o status do registro."
      */
-    await this.universityRep.delete(universityFound);
+    await this.universityRep.delete(universityFound[0]);
 
     return Response_.Ok({
-      deletedId: univeristyId,
+      deletedId: universityId,
       status: true,
     });
   }
