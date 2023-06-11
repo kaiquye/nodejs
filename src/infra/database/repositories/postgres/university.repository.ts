@@ -3,8 +3,8 @@ import { IUniversityRepository } from '../../../../application/university/reposi
 import { FindOptionsWhere } from 'typeorm';
 
 export class UniversityRepository extends IUniversityRepository {
-  async exists(where: FindOptionsWhere<University>): Promise<University> {
-    return this.Reading.findOne({ where });
+  async exists(where: FindOptionsWhere<University>): Promise<University[]> {
+    return this.Reading.find({ where });
   }
 
   async create(data: University): Promise<University> {
