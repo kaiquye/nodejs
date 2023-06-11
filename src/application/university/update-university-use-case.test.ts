@@ -1,9 +1,5 @@
 import { UniversityMemoryRepository } from '../../infra/database/repositories/memory/university-memory.repository';
 import { IUniversityRepository } from './repository/university-repository.interface';
-import {
-  IListUniversityIn,
-  ListUniversityAdapter,
-} from './interfaces/list-university.interface';
 import { ListUniversityUseCase } from './list-university.use-case';
 import {UniversityErrorsCodes} from "../../domain/codes/university-errors.codes";
 

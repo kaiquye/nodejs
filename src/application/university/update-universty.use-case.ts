@@ -3,10 +3,11 @@ import {
   UpdateUniversityAdapter,
 } from './interfaces/update-university.interface';
 import { Response_ } from '../../domain/error/custom.error';
-import { inject } from 'tsyringe';
+import { inject, injectable } from 'tsyringe';
 import { IUniversityRepository } from './repository/university-repository.interface';
 import { UniversityErrorsCodes } from '../../domain/codes/university-errors.codes';
 
+@injectable()
 export class UpdateUniversityUseCase implements UpdateUniversityAdapter {
   constructor(
     @inject('university-repository')
@@ -24,10 +25,7 @@ export class UpdateUniversityUseCase implements UpdateUniversityAdapter {
       });
     }
 
-    const updated = await this.universityRep.update(
-      input.updateForThisId,
-      input.updateForThisId,
-    );
+    const updated = await this.universityRep.update(input.updateForThisId, input.infos);
 
     return Response_.Ok(updated);
   }
