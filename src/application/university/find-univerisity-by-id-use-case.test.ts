@@ -1,16 +1,15 @@
+import { UniversityMemoryRepository } from '../../infra/database/repositories/memory/university-memory.repository';
+import { CreateUniversityUseCase } from './create-university.use-case';
+import { DeleteUniversityUseCase } from './delete-university.use-case';
 import {
   CreateUniversityUseCaseAdapter,
   ICreateUniversityIN,
 } from './interfaces/create-university.interfaces';
 import { IUniversityRepository } from './repository/university-repository.interface';
-import { UniversityMemoryRepository } from '../../infra/database/repositories/memory/university-memory.repository';
 import { UniversityErrorsCodes } from '../../domain/codes/university-errors.codes';
-import { DeleteUniversityAdapter } from './interfaces/delete-university.interfaces';
-import { DeleteUniversityUseCase } from './delete-university.use-case';
-import { CreateUniversityUseCase } from './create-university.use-case';
 
-describe('delete university by id', function () {
-  let service: DeleteUniversityAdapter;
+describe('find university by id', function () {
+  let service;
   let createUniversityUseCase: CreateUniversityUseCaseAdapter;
   let repositoryInMemory: IUniversityRepository;
 
@@ -26,12 +25,12 @@ describe('delete university by id', function () {
     createUniversityUseCase = null;
   });
 
-  test('shoud check if if it was defined', function () {
+  test('should check if if it was defined', function () {
     expect(service).toBeDefined();
     expect(repositoryInMemory).toBeDefined();
   });
 
-  test('should delete a university by id', async function () {
+  test('should find a university by id', async function () {
     const mock: ICreateUniversityIN = {
       country: 'wrx-sti-impreza',
       countryCode: 'EX',
@@ -45,10 +44,9 @@ describe('delete university by id', function () {
     const result = await service.Invoke(university.data['id']);
 
     expect(result.success).toEqual(true);
-    expect(result.data['status']).toEqual(true);
-    expect(result.data['deletedId']).toEqual(university.data['id']);
+    expect(result.data['university']).toEqual(university.data);
   });
-  test('should return university not foudn', async function () {
+  test('should return not found', async function () {
     const request = 'aaaa-bbbb-cccc-dddd'; //uuid
 
     try {

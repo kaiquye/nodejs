@@ -15,6 +15,8 @@ export class DeleteUniversityUseCase implements DeleteUniversityAdapter {
       id: univeristyId,
     });
 
+    console.log(universityFound);
+
     if (!universityFound) {
       throw Response_.NotFoundException({
         message: 'The university provided was not found in our database',
