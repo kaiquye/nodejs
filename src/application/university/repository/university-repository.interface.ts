@@ -9,7 +9,7 @@ export abstract class IUniversityRepository extends RepositoryAdapter<University
   abstract create(data: University): Promise<University>;
   abstract exists(data: FindOptionsWhere<University>): Promise<University>;
   abstract delete(university: University): Promise<University>;
-  abstract update(id: string, data: University): Promise<University>;
+  abstract update(data: University): Promise<University>;
   abstract findAllByCountry(
     country: string,
     page: number,

@@ -36,7 +36,7 @@ export class UniversityMemoryRepository extends IUniversityRepository {
     return Promise.resolve(university);
   }
 
-  update(id: string, data: University): Promise<University> {
+  async update(data: University): Promise<University> {
     const index = this.database.indexOf(data);
     if (index) {
       this.database.slice(index, 1);

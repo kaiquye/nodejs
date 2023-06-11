@@ -38,4 +38,13 @@ export class UniversityRepository extends IUniversityRepository {
   async delete(universiry: University): Promise<University> {
     return this.Writing.remove(universiry);
   }
+
+  async update(data: University): Promise<University> {
+    await this.Writing.createQueryBuilder()
+      .update(University)
+      .set({ ...data })
+      .where('id = :id', { id: 1 });
+
+    return data;
+  }
 }
