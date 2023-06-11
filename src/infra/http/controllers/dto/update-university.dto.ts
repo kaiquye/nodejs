@@ -9,5 +9,5 @@ export class UpdateUniversityDtoBody extends DtoAdapter {
 
 export class UpdateUniversityDtoParams extends DtoAdapter {
   @IsUUID()
-  updateForThisId: string;
+  university_id: string;
 }

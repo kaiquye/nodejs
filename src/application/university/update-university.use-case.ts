@@ -31,8 +31,8 @@ export class UpdateUniversityUseCase implements UpdateUniversityAdapter {
      * @description Armazene os valores que são únicos para evitar erros durante a atualização.
      */
     const UniqueFields = {
-      name: input.infos?.name ?? universityFound[0].name,
-      countryCode: input.infos?.countryCode ?? universityFound[0].countryCode,
+      name: input.infos?.name ?? universityFound?.name,
+      countryCode: input.infos?.countryCode ?? universityFound?.countryCode,
     };
 
     if (input.infos?.name || input.infos?.countryCode) {

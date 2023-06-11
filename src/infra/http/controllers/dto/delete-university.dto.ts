@@ -3,5 +3,5 @@ import { DtoAdapter } from '../../../../domain/adapters/dto-adapter';
 
 export class DeleteUniversityDto extends DtoAdapter {
   @IsUUID()
-  university_id: string[];
+  university_id: string;
 }

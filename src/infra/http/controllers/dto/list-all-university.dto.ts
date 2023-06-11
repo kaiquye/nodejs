@@ -5,6 +5,9 @@ import { Transform, Type } from 'class-transformer';
 export class ListAllUniversityDto extends DtoAdapter {
   @IsNotEmpty()
   country: string;
+
+  page: number;
+
   @IsNotEmpty()
   @Transform(({ value }) => {
     return Number(value);

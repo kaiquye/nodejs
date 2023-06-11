@@ -30,7 +30,7 @@ UniversityRoutes.get(
 );
 UniversityRoutes.patch(
   `/university/:university_id`,
-  DTOFilter(UpdateUniversityDtoParams, 'PARAMS'),
+  // DTOFilter(UpdateUniversityDtoParams, 'PARAMS'),
   DTOFilter(UpdateUniversityDtoBody, 'BODY'),
   InterceptorResponse(universityController.update.bind(universityController)), // it is necessary to use because of dependency injection
 );

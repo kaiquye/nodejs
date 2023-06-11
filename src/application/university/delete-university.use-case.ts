@@ -25,7 +25,7 @@ export class DeleteUniversityUseCase implements DeleteUniversityAdapter {
     /**
      * @AVISO: "Em vez de apagar o registro do banco de dados, devemos apenas alterar o status do registro."
      */
-    await this.universityRep.delete(universityFound[0]);
+    await this.universityRep.delete(universityFound);
 
     return Response_.Ok({
       deletedId: universityId,
