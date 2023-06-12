@@ -1,8 +1,8 @@
-import { UniversityMemoryRepository } from '../../infra/database/repositories/memory/university-memory.repository';
-import { IUniversityRepository } from './repository/university-repository.interface';
-import { UpdateUniversityAdapter } from './interfaces/update-university.interface';
-import { UpdateUniversityUseCase } from './update-university.use-case';
-import { UniversityErrorsCodes } from '../../domain/error/codes/university-errors.codes';
+import { UniversityMemoryRepository } from '../../../infra/database/repositories/memory/university-memory.repository';
+import { IUniversityRepository } from '../repository/university-repository.interface';
+import { UpdateUniversityAdapter } from '../interfaces/update-university.interface';
+import { UpdateUniversityUseCase } from '../update-university.use-case';
+import { UniversityErrorsCodes } from '../../../domain/error/codes/university-errors.codes';
 
 describe('update a  university', function () {
   let service: UpdateUniversityAdapter;

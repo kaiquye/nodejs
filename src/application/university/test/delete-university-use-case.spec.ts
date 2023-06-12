@@ -1,23 +1,23 @@
-import { UniversityMemoryRepository } from '../../infra/database/repositories/memory/university-memory.repository';
-import { CreateUniversityUseCase } from './create-university.use-case';
 import {
   CreateUniversityUseCaseAdapter,
   ICreateUniversityIN,
-} from './interfaces/create-university.interfaces';
-import { IUniversityRepository } from './repository/university-repository.interface';
-import { UniversityErrorsCodes } from '../../domain/error/codes/university-errors.codes';
-import { FindUniversityByIdAdapter } from './interfaces/find-university-by-id.interfaces';
-import { FindUniversityByIdUseCase } from './find-university-by-id.use.case';
+} from '../interfaces/create-university.interfaces';
+import { IUniversityRepository } from '../repository/university-repository.interface';
+import { UniversityMemoryRepository } from '../../../infra/database/repositories/memory/university-memory.repository';
+import { UniversityErrorsCodes } from '../../../domain/error/codes/university-errors.codes';
+import { DeleteUniversityAdapter } from '../interfaces/delete-university.interfaces';
+import { DeleteUniversityUseCase } from '../delete-university.use-case';
+import { CreateUniversityUseCase } from '../create-university.use-case';
 
-describe('find university by id', function () {
-  let service: FindUniversityByIdAdapter;
+describe('delete university by id', function () {
+  let service: DeleteUniversityAdapter;
   let createUniversityUseCase: CreateUniversityUseCaseAdapter;
   let repositoryInMemory: IUniversityRepository;
 
   beforeAll(() => {
     repositoryInMemory = new UniversityMemoryRepository();
     createUniversityUseCase = new CreateUniversityUseCase(repositoryInMemory);
-    service = new FindUniversityByIdUseCase(repositoryInMemory);
+    service = new DeleteUniversityUseCase(repositoryInMemory);
   });
 
   afterAll(() => {
@@ -26,12 +26,12 @@ describe('find university by id', function () {
     createUniversityUseCase = null;
   });
 
-  test('should check if if it was defined', function () {
+  test('shoud check if if it was defined', function () {
     expect(service).toBeDefined();
     expect(repositoryInMemory).toBeDefined();
   });
 
-  test('should find a university by id', async function () {
+  test('should delete a university by id', async function () {
     const mock: ICreateUniversityIN = {
       country: 'wrx-sti-impreza',
       countryCode: 'EX',
@@ -45,9 +45,10 @@ describe('find university by id', function () {
     const result = await service.Invoke(university.data['id']);
 
     expect(result.success).toEqual(true);
-    expect(result.data).toEqual(university.data);
+    expect(result.data['status']).toEqual(true);
+    expect(result.data['deletedId']).toEqual(university.data['id']);
   });
-  test('should return not found', async function () {
+  test('should return university not foudn', async function () {
     const request = 'aaaa-bbbb-cccc-dddd'; //uuid
 
     try {

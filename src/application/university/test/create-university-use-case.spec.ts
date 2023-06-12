@@ -1,12 +1,12 @@
 import {
   CreateUniversityUseCaseAdapter,
   ICreateUniversityIN,
-} from './interfaces/create-university.interfaces';
-import { UniversityMemoryRepository } from '../../infra/database/repositories/memory/university-memory.repository';
-import { IUniversityRepository } from './repository/university-repository.interface';
-import { CreateUniversityUseCase } from './create-university.use-case';
-import { Response_ } from '../../domain/error/custom.error';
-import { UniversityErrorsCodes } from '../../domain/error/codes/university-errors.codes';
+} from '../interfaces/create-university.interfaces';
+import { UniversityMemoryRepository } from '../../../infra/database/repositories/memory/university-memory.repository';
+import { IUniversityRepository } from '../repository/university-repository.interface';
+import { CreateUniversityUseCase } from '../create-university.use-case';
+import { Response_ } from '../../../domain/error/custom.error';
+import { UniversityErrorsCodes } from '../../../domain/error/codes/university-errors.codes';
 
 describe('create a new university', function () {
   let service: CreateUniversityUseCaseAdapter;

@@ -1,11 +1,11 @@
-import { UniversityMemoryRepository } from '../../infra/database/repositories/memory/university-memory.repository';
-import { IUniversityRepository } from './repository/university-repository.interface';
-import { CreateUniversityUseCase } from './create-university.use-case';
+import { UniversityMemoryRepository } from '../../../infra/database/repositories/memory/university-memory.repository';
+import { IUniversityRepository } from '../repository/university-repository.interface';
+import { CreateUniversityUseCase } from '../create-university.use-case';
 import {
   IListUniversityIn,
   ListUniversityAdapter,
-} from './interfaces/list-university.interface';
-import { ListUniversityUseCase } from './list-university.use-case';
+} from '../interfaces/list-university.interface';
+import { ListUniversityUseCase } from '../list-university.use-case';
 
 describe('create a new university', function () {
   let service: ListUniversityAdapter;
