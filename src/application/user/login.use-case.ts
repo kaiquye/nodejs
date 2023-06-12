@@ -4,13 +4,13 @@ import {
 } from './interfaces/authorization.interfaces';
 import { Response_ } from '../../domain/error/custom.error';
 import { inject, injectable } from 'tsyringe';
-import { IUserRepository } from '../user/repository/user-repository.interface';
+import { IUserRepository } from './repository/user-repository.interface';
 import { UserErrorsCodes } from '../../domain/error/codes/user-errors.codes';
 import { Password } from '../../@config/password';
 import { JsonWebTokenConfig } from '../../@config/json-web-token.config';
 
 @injectable()
-export class AuthorizationUseCase implements AuthorizationAdapter {
+export class LoginUseCase implements AuthorizationAdapter {
   constructor(
     @inject('user-repository')
     private readonly userRep: IUserRepository,
@@ -27,6 +27,10 @@ export class AuthorizationUseCase implements AuthorizationAdapter {
       });
     }
 
+    console.log('user found', userFound.password);
+    console.log('user found', userFound.password);
+    console.log('user found', userFound.password);
+    console.log('user found', userFound.password);
     const pass = new Password();
     const match = await pass.compare(input.password, userFound.password);
 

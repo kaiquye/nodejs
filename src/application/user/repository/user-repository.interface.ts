@@ -7,5 +7,5 @@ export abstract class IUserRepository extends RepositoryAdapter<User> {
   }
   abstract create(data: User): Promise<User>;
   abstract exists(data: Partial<User>): Promise<User>;
-  abstract update(data: Partial<User>): Promise<User>;
+  abstract updatePassword(data: Partial<User>): Promise<Partial<User>>;
 }

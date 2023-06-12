@@ -1,4 +1,4 @@
-import { ListAllUniversityDto } from './list-all-university.dto';
+import { ListAllUniversityDto } from '../list-all-university.dto';
 
 describe('create university dto', function () {
   test('should create a new instance', function () {

@@ -44,7 +44,7 @@ export function InterceptorResponse(
       // if (response.cookie?.name && response.cookie?.value) {
       //   res.cookie(response.cookie.name, response.cookie.value, { httpOnly: true });
       // }
-
+      console.log(response);
       return res.status(response?.statusCode || 200).json({
         data: response?.data,
         success: response.success,

@@ -1,0 +1,1095 @@
+{
+	"info": {
+		"_postman_id": "7d7f14b6-bc07-4721-b811-417240c3ad66",
+		"name": "univeristy-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17382453",
+		"_collection_link": "https://cloudy-water-660531.postman.co/workspace/Team-Workspace~63a6d902-0795-441a-8433-00344ff84f67/collection/17382453-7d7f14b6-bc07-4721-b811-417240c3ad66?action=share&creator=17382453&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "university",
+			"item": [
+				{
+					"name": "list-all-univeristys",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url_local_server}}/server/v1/university/list?country=example&perPage=1",
+							"host": [
+								"{{url_local_server}}"
+							],
+							"path": [
+								"server",
+								"v1",
+								"university",
+								"list"
+							],
+							"query": [
+								{
+									"key": "country",
+									"value": "example"
+								},
+								{
+									"key": "perPage",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "SUCCESS",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4000/server/v1/university/list?country=example&perPage=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"server",
+										"v1",
+										"university",
+										"list"
+									],
+									"query": [
+										{
+											"key": "country",
+											"value": "example"
+										},
+										{
+											"key": "perPage",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "204"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"cc-IMwCzevphhTydrc3LKEE9D9O4Wc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 02:17:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"count\": 1,\n        \"search\": \"example\",\n        \"current_page\": 0,\n        \"per_page\": \"1\",\n        \"list\": [\n            {\n                \"id\": \"ac3c2675-39ce-4a6b-bff4-f26b74778bce\",\n                \"name\": \"EXAMPLE\",\n                \"stateProvince\": \"example\",\n                \"country\": \"example\"\n            }\n        ]\n    },\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "create-university",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"EdXAMPLE\",\r\n    \"domain\": [\r\n        \"EXAMPLE.com\"\r\n    ],\r\n    \"webPages\": [\r\n        \"examdple.com\"\r\n    ],\r\n    \"countryCode\": \"EX\",\r\n    \"country\": \"example\",\r\n    \"stateProvince\": \"example\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_local_server}}/server/v1/university/new",
+							"host": [
+								"{{url_local_server}}"
+							],
+							"path": [
+								"server",
+								"v1",
+								"university",
+								"new"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "CREATED",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"EXAMPLE\",\r\n    \"domain\": [\r\n        \"EXAMPLE.com\"\r\n    ],\r\n    \"webPages\": [\r\n        \"example.com\"\r\n    ],\r\n    \"countryCode\": \"EX\",\r\n    \"country\": \"example\",\r\n    \"stateProvince\": \"example\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/server/v1/university/new",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"server",
+										"v1",
+										"university",
+										"new"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "283"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"11b-n2VZQGsZyx2cMwxqlvfS6fSA1Tk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 02:17:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"name\": \"EXAMPLE\",\n        \"stateProvince\": \"example\",\n        \"country\": \"example\",\n        \"countryCode\": \"EX\",\n        \"domain\": [\n            \"EXAMPLE.com\"\n        ],\n        \"webPages\": [\n            \"example.com\"\n        ],\n        \"id\": \"ac3c2675-39ce-4a6b-bff4-f26b74778bce\",\n        \"created_at\": \"2023-06-11T02:17:00.963Z\",\n        \"updated_at\": \"2023-06-11T02:17:00.963Z\"\n    },\n    \"success\": true\n}"
+						},
+						{
+							"name": "already exists",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"EXAMPLE\",\r\n    \"domain\": [\r\n        \"EXAMPLE.com\"\r\n    ],\r\n    \"webPages\": [\r\n        \"example.com\"\r\n    ],\r\n    \"countryCode\": \"EX\",\r\n    \"country\": \"example\",\r\n    \"stateProvince\": \"example\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/server/v1/university/new",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"server",
+										"v1",
+										"university",
+										"new"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "115"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"73-+k1Rej9PIGGNkuLe2t0itqdMqfM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 02:17:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": true,\n    \"code\": \"UNIVERSITY:CD409\",\n    \"message\": \"The university provided has already been registered previously\"\n}"
+						}
+					]
+				},
+				{
+					"name": "update-university",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"infos\": {\r\n        \"name\": \"kaique\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_local_server}}/server/v1/university/11aa5e50-b766-409c-bda5-95acfc8852d9",
+							"host": [
+								"{{url_local_server}}"
+							],
+							"path": [
+								"server",
+								"v1",
+								"university",
+								"11aa5e50-b766-409c-bda5-95acfc8852d9"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "SUCCESS",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"infos\": {\r\n        \"name\": \"kaique\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/server/v1/university/11aa5e50-b766-409c-bda5-95acfc8852d9",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"server",
+										"v1",
+										"university",
+										"11aa5e50-b766-409c-bda5-95acfc8852d9"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29-60P/5qycbzdaOsh7UYVKYjn9GOY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 02:08:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"name\": \"kaique\"\n    },\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "delete university",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbmZvcyI6eyJuYW1lIjoia2FpcXVlIiwiZW1haWwiOiJrYXF1ZTIyQGdtYWlsLmNvbSJ9LCJjbGFpbXMiOlsid3JpdGluZywgcmVhZGluZywgZ2xvYmFsX2FjY2VzcyJdLCJpYXQiOjE2ODY1MTkzNzAsImV4cCI6MTY4NjUyMjM3MH0.OZxe2k6uscIZB8W3HHhaPZy1FDrPoJhGiO0FZbmm39Y",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url_local_server}}/server/v1/university/{{university_id}}",
+							"host": [
+								"{{url_local_server}}"
+							],
+							"path": [
+								"server",
+								"v1",
+								"university",
+								"{{university_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "NOT FOUND",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4000/server/v1/university/11aa5e50-b766-409c-bda5-95acfc8852d9",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"server",
+										"v1",
+										"university",
+										"11aa5e50-b766-409c-bda5-95acfc8852d9"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "107"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6b-xa7WDDrT5WoqQqRFzSMS1htgE24\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 02:14:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": true,\n    \"code\": \"UNIVERSITY:CD0404\",\n    \"message\": \"The university provided was not found in our database\"\n}"
+						},
+						{
+							"name": "DELETED",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4000/server/v1/university/beea3117-8c3d-4278-981f-6831bf4ba478",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"server",
+										"v1",
+										"university",
+										"beea3117-8c3d-4278-981f-6831bf4ba478"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "90"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5a-hLfZehwkAU6DmE2I0rGXJ2cquHU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 02:14:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"deletedId\": \"beea3117-8c3d-4278-981f-6831bf4ba478\",\n        \"status\": true\n    },\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "find by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url_local_server}}/server/v1/university/{{university_id}}",
+							"host": [
+								"{{url_local_server}}"
+							],
+							"path": [
+								"server",
+								"v1",
+								"university",
+								"{{university_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "SUCCESS",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4000/server/v1/university/e4f7ab76-9302-413e-a72e-163401f2ac56",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"server",
+										"v1",
+										"university",
+										"e4f7ab76-9302-413e-a72e-163401f2ac56"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "309"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"135-PaGXwWdoqLJZWg1uziFOkeGkbAA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 02:15:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": \"e4f7ab76-9302-413e-a72e-163401f2ac56\",\n        \"name\": \"nurburgrweqwbhnsisng=Gdss \",\n        \"stateProvince\": \"nurburgrings \",\n        \"country\": \"SSSAS \",\n        \"countryCode\": \"tr\",\n        \"domain\": [\n            \"nurburqsdsdj=ringsSD \"\n        ],\n        \"webPages\": [\n            \" fd\"\n        ],\n        \"created_at\": \"2023-06-11T02:15:45.757Z\",\n        \"updated_at\": \"2023-06-11T02:15:45.757Z\"\n    },\n    \"success\": true\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"kaque22@gmail.com\",\r\n    \"name\": \"kaique\",\r\n    \"password\": \"wrxStiImpres@\",\r\n    \"phone\": \"323213123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_local_server}}/server/v1/user/new",
+							"host": [
+								"{{url_local_server}}"
+							],
+							"path": [
+								"server",
+								"v1",
+								"user",
+								"new"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "user already exists",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"kaque@gmail.com\",\r\n    \"name\": \"kaique\",\r\n    \"password\": \"wrxStiImpres@\",\r\n    \"phone\": \"323213123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/server/v1/user/new",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"server",
+										"v1",
+										"user",
+										"new"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "70"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"46-7+a88CmqC4ed2QQ/NzMJDyb1cN4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 21:18:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": true,\n    \"code\": \"USER:CD409\",\n    \"message\": \"user already registered\"\n}"
+						},
+						{
+							"name": "created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"kaque22@gmail.com\",\r\n    \"name\": \"kaique\",\r\n    \"password\": \"wrxStiImpres@\",\r\n    \"phone\": \"323213123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/server/v1/user/new",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"server",
+										"v1",
+										"user",
+										"new"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "133"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"85-AqxDWJsvYvVxHt4sINMdxUROd1A\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 21:21:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"name\": \"kaique\",\n        \"email\": \"kaque22@gmail.com\",\n        \"phone\": \"323213123\",\n        \"id\": \"b7088104-6ef0-4b81-85a3-56b88c391a60\"\n    },\n    \"success\": true\n}"
+						},
+						{
+							"name": "senha invalida",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"kaque22@gmail.com\",\r\n    \"name\": \"kaique\",\r\n    \"password\": \"wrxStiImSpres@\",\r\n    \"phone\": \"323213123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_local_server}}/server/v1/user/new",
+									"host": [
+										"{{url_local_server}}"
+									],
+									"path": [
+										"server",
+										"v1",
+										"user",
+										"new"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "180"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b4-TtTQlBRcretAy0kBZWaecD+KElw\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Jun 2023 00:41:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"invalid request\",\n    \"data\": [\n        {\n            \"matches\": \"A senha deve conter pelo menos 8 caracteres, incluindo caracteres especiais, letras maiúsculas, letras minúsculas e números.\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "login user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"kaque22@gmail.com\",\r\n    \"password\": \"wrxStiImpres@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/server/v1/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"server",
+								"v1",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "user not found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"kaque@gmail.com\",\r\n    \"password\": \"wrxStiImpres@\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/server/v1/user/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"server",
+										"v1",
+										"user",
+										"login"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "62"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3e-vgDh9DH6GRDwSzeXyhpCgfyWnlU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 21:19:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": true,\n    \"code\": \"USER:CD0404\",\n    \"message\": \"user not found\"\n}"
+						},
+						{
+							"name": "login success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"kaque22@gmail.com\",\r\n    \"password\": \"wrxStiImpres@\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/server/v1/user/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"server",
+										"v1",
+										"user",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "303"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12f-67sL1bwboY1zzaRoPpBrmLuSYh4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Jun 2023 21:36:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbmZvcyI6eyJuYW1lIjoia2FpcXVlIiwiZW1haWwiOiJrYXF1ZTIyQGdtYWlsLmNvbSJ9LCJjbGFpbXMiOlsid3JpdGluZywgcmVhZGluZywgZ2xvYmFsX2FjY2VzcyJdLCJpYXQiOjE2ODY1MTkzNzAsImV4cCI6MTY4NjUyMjM3MH0.OZxe2k6uscIZB8W3HHhaPZy1FDrPoJhGiO0FZbmm39Y\"\n    },\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "update password",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"kaque22@gmail.com\",\r\n    \"current_password\": \"wrxStiImpres@\",\r\n    \"new_password\": \"@Sadas@424323\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_local_server}}/server/v1/user/update/password",
+							"host": [
+								"{{url_local_server}}"
+							],
+							"path": [
+								"server",
+								"v1",
+								"user",
+								"update",
+								"password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "updated",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"kaque22@gmail.com\",\r\n    \"current_password\": \"wrxStiImpres@\",\r\n    \"new_password\": \"@Sadas@424323\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/server/v1/user/update/password",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"server",
+										"v1",
+										"user",
+										"update",
+										"password"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "72"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"48-Xj1dT+bm5xyqqYrLaPKD0nyCBjI\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Jun 2023 00:29:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"status\": true,\n        \"description\": \"password updated\"\n    },\n    \"success\": true\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}

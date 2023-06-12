@@ -14,6 +14,7 @@ class UserMapper {
   toView(data: User): Partial<User> {
     delete data.created_at;
     delete data.updated_at;
+    delete data.password;
 
     return data;
   }

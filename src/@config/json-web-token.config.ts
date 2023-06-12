@@ -5,12 +5,13 @@ export class JsonWebTokenConfig {
   private readonly symmetricKey = APP_CONFIG.SYMMETRIC_KEY;
   async sing(payload: object, claim: string[]) {
     const data = { infos: payload, claims: claim };
-    jwt.sign(data, this.symmetricKey, { algorithm: 'RS256', expiresIn: 3000 });
+    return jwt.sign(data, this.symmetricKey, { algorithm: 'HS256', expiresIn: 3000 });
   }
 
   async verify(access_token: string) {
     try {
-      jwt.verify(access_token, this.symmetricKey);
+      const rs = await jwt.verify(access_token, this.symmetricKey);
+      return rs;
     } catch (e) {
       return false;
     }

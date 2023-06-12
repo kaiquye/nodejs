@@ -8,6 +8,7 @@ import { IUserRepository } from './repository/user-repository.interface';
 import { UserErrorsCodes } from '../../domain/error/codes/user-errors.codes';
 import UserMapper from '../../domain/mappers/user.mapper';
 import { inject, injectable } from 'tsyringe';
+import { Password } from '../../@config/password';
 
 @injectable()
 export class CreateUserUseCase implements CreateUserUseCaseAdapter {
@@ -23,10 +24,15 @@ export class CreateUserUseCase implements CreateUserUseCaseAdapter {
         code: UserErrorsCodes.CD0409,
       });
     }
+    const password = new Password();
+    const passwordHash = await password.generate(input.password);
+    console.log(passwordHash);
+    input.password = passwordHash;
 
     const mapper = UserMapper.toDomain(input);
     const newUser = await this.userRep.create(mapper);
+    const view = UserMapper.toView(newUser);
 
-    return Response_.Created(newUser);
+    return Response_.Created(view);
   }
 }

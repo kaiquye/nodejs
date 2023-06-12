@@ -13,7 +13,7 @@ export class UserMemoryRepository extends IUserRepository {
     return Promise.resolve(result);
   }
 
-  update(data: Partial<User>): Promise<User> {
+  updatePassword(data: Partial<User>): Promise<User> {
     return Promise.resolve(undefined);
   }
 }
