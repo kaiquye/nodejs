@@ -1,7 +1,7 @@
-import { CreateUserUseCase } from './create-user.use-case';
-import { IUserRepository } from './repository/user-repository.interface';
-import { UserMemoryRepository } from '../../infra/database/repositories/memory/user-memory.repository';
-import { UserErrorsCodes } from '../../domain/error/codes/user-errors.codes';
+import { CreateUserUseCase } from '../create-user.use-case';
+import { IUserRepository } from '../repository/user-repository.interface';
+import { UserMemoryRepository } from '../../../infra/database/repositories/memory/user-memory.repository';
+import { UserErrorsCodes } from '../../../domain/error/codes/user-errors.codes';
 
 describe('create a new user', function () {
   let service: CreateUserUseCase;

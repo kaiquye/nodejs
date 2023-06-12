@@ -1,8 +1,8 @@
-import { IUserRepository } from './repository/user-repository.interface';
-import { UserMemoryRepository } from '../../infra/database/repositories/memory/user-memory.repository';
-import { UserErrorsCodes } from '../../domain/error/codes/user-errors.codes';
-import { LoginUseCase } from './login.use-case';
-import { CreateUserUseCase } from './create-user.use-case';
+import { IUserRepository } from '../repository/user-repository.interface';
+import { UserMemoryRepository } from '../../../infra/database/repositories/memory/user-memory.repository';
+import { UserErrorsCodes } from '../../../domain/error/codes/user-errors.codes';
+import { LoginUseCase } from '../login.use-case';
+import { CreateUserUseCase } from '../create-user.use-case';
 
 describe('login user', function () {
   let service: LoginUseCase;
