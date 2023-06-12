@@ -44,7 +44,8 @@ export class UniversityRepository extends IUniversityRepository {
     await this.Writing.createQueryBuilder()
       .update(University)
       .set({ ...data })
-      .where('id = :id', { id: 1 });
+      .where('id = :id', { id: data.id })
+      .execute();
 
     return data;
   }

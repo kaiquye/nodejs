@@ -1,4 +1,4 @@
-import { DtoAdapter } from '../../../domain/adapters/dto-adapter';
+import { DtoAdapter } from '../../../domain/adapters/dto.adapter';
 import { IPathsDto } from '../../../domain/interfaces/filters.interfaces';
 import { plainToClass } from 'class-transformer';
 import { Request } from 'express';

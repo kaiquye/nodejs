@@ -4,7 +4,7 @@ import {
 } from './interfaces/create-university.interfaces';
 import { IUniversityRepository } from './repository/university-repository.interface';
 import { UniversityMemoryRepository } from '../../infra/database/repositories/memory/university-memory.repository';
-import { UniversityErrorsCodes } from '../../domain/codes/university-errors.codes';
+import { UniversityErrorsCodes } from '../../domain/error/codes/university-errors.codes';
 import { DeleteUniversityAdapter } from './interfaces/delete-university.interfaces';
 import { DeleteUniversityUseCase } from './delete-university.use-case';
 import { CreateUniversityUseCase } from './create-university.use-case';

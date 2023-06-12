@@ -6,7 +6,7 @@ import { UniversityMemoryRepository } from '../../infra/database/repositories/me
 import { IUniversityRepository } from './repository/university-repository.interface';
 import { CreateUniversityUseCase } from './create-university.use-case';
 import { Response_ } from '../../domain/error/custom.error';
-import { UniversityErrorsCodes } from '../../domain/codes/university-errors.codes';
+import { UniversityErrorsCodes } from '../../domain/error/codes/university-errors.codes';
 
 describe('create a new university', function () {
   let service: CreateUniversityUseCaseAdapter;
@@ -59,10 +59,10 @@ describe('create a new university', function () {
 
     try {
       await service.Invoke(request);
-    } catch (expedition) {
-      expect(expedition.statusCode).toEqual(409);
-      expect(expedition.code).toEqual(UniversityErrorsCodes.CD0409);
-      expect(expedition.message).toEqual(
+    } catch (exception) {
+      expect(exception.statusCode).toEqual(409);
+      expect(exception.code).toEqual(UniversityErrorsCodes.CD0409);
+      expect(exception.message).toEqual(
         'The university provided has already been registered previously',
       );
     }

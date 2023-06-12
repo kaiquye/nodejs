@@ -2,7 +2,7 @@ import { UniversityMemoryRepository } from '../../infra/database/repositories/me
 import { IUniversityRepository } from './repository/university-repository.interface';
 import { UpdateUniversityAdapter } from './interfaces/update-university.interface';
 import { UpdateUniversityUseCase } from './update-university.use-case';
-import { UniversityErrorsCodes } from '../../domain/codes/university-errors.codes';
+import { UniversityErrorsCodes } from '../../domain/error/codes/university-errors.codes';
 
 describe('update a  university', function () {
   let service: UpdateUniversityAdapter;
